@@ -11,54 +11,30 @@ redirect_from:
 
 Education
 ======
-* Ph.D in Version Control Theory, GitHub University, 2018 (expected)
-* M.S. in Jekyll, GitHub University, 2014
-* B.S. in GitHub, GitHub University, 2012
+* Bachelors of Mathematics, University of Waterloo, 2024
+  * Majors in Honours Statistics and Honours Computational Mathematics
+  * Minor in Computing
 
-Work experience
+Interests
 ======
-* Spring 2024: Academic Pages Collaborator
-  * Github University
-  * Duties includes: Updates and improvements to template
-  * Supervisor: The Users
+* Mathematics & Statistics:
+  * Survival analysis
+  * Computational statistics
+  * DE system analysis
+  * Computational biology
+* Computer Science:
+  * Software development
+  * App design
 
-* Fall 2015: Research Assistant
-  * Github University
-  * Duties included: Merging pull requests
-  * Supervisor: Professor Hub
+Projects
+======
+* A comparative report on the Cox proportional hazards regression model and two tree-based models for STAT437: [`Implementing Optimal Survival Tree Algorithm`](https://github.com/bryanzang/UW-stat437-Project)
+* An inference model and report for explaining the annual patterns of Canadian temperature for STAT444: [`Spatial Models for Canadian Temperature Inference`](https://github.com/bryanzang/UW-stat444-Project)
+* An extension and analysis of an existing tumor cell growth model for AMATH382: [`Tumor Modeling with HTC and iNKT`](https://github.com/bryanzang/UW-amath382-Project)
+* An implementation of the Simplex algorithm and other Simplex-based computations from CO250: [`Simplex`](https://github.com/bryanzang/UW-co250-Simplex)
 
-* Summer 2015: Research Assistant
-  * Github University
-  * Duties included: Tagging issues
-  * Supervisor: Professor Git
-  
 Skills
 ======
-* Skill 1
-* Skill 2
-  * Sub-skill 2.1
-  * Sub-skill 2.2
-  * Sub-skill 2.3
-* Skill 3
-
-Publications
-======
-  <ul>{% for post in site.publications reversed %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
-  
-Talks
-======
-  <ul>{% for post in site.talks reversed %}
-    {% include archive-single-talk-cv.html  %}
-  {% endfor %}</ul>
-  
-Teaching
-======
-  <ul>{% for post in site.teaching reversed %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
-  
-Service and leadership
-======
-* Currently signed in to 43 different slack teams
+* Fluent in both Mandarin Chinese and English
+* Proficient in `Python`, `Matlab`, and `R`
+* Familiar with `SQL` and `Java`
