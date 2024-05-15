@@ -1,7 +1,7 @@
 ---
 title: "Portfolio item number 1"
-excerpt: "sun glaring through tree canopy<br/><img src='/images/photos/IMG_2390_edit.png'>"
+excerpt: "Portfolio item number 1<br/><img src='/images/500x300.png'>"
 collection: portfolio
 ---
 
-The sun was very nice.
+
