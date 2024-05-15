@@ -35,6 +35,6 @@ Interests
 
 Skills
 ======
-* Fluent in both Mandarin Chinese and English
 * Proficient in `Python`, `Matlab`, and `R`
 * Familiar with `SQL` and `Java`
+* Fluent in both Mandarin Chinese and English
