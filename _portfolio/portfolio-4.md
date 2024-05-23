@@ -1,6 +1,6 @@
 ---
 title: "Spatial Models for Canadian Temperature Inference"
-excerpt: "A report on modeling annual Canadian temperature for statistical inference"
+excerpt: "A statistical inference report on the comparison of different spatial models to explain annual Canadian temperature; involves spline-based regression and polynomial regression"
 collection: portfolio
 ---
 
