@@ -14,6 +14,7 @@ Education
 * Bachelors of Mathematics, University of Waterloo, 2024
   * Majors in Honours Statistics and Honours Computational Mathematics
   * Minor in Computing
+  * **Relevant Courses:** Data Structures, Algorithms, Computational Statistics, Neural Networks, Life History & Survival Analysis, Advanced Regression, Estimation and Hypothesis Testing, Stochastic Processes, Databases, Applied Econometrics, intro to Microeconomics/Macroeconomics, Linear/Nonlinear Optimization, Graph Theory, Generalized Linear Models
 
 Projects
 ======
@@ -21,6 +22,21 @@ Projects
 * An inference model and report for explaining the annual patterns of Canadian temperature for STAT444: [`Spatial Models for Canadian Temperature Inference`](https://github.com/bryanzang/UW-stat444-Project)
 * An extension and analysis of an existing tumor cell growth model for AMATH382: [`Tumor Modeling with HTC and iNKT`](https://github.com/bryanzang/UW-amath382-Project)
 * An implementation of the Simplex algorithm and other Simplex-based computations from CO250: [`Simplex`](https://github.com/bryanzang/UW-co250-Simplex)
+
+Skills
+======
+* **Languages:** `R`, `Python`, `Matlab`, `Julia`, `SQL`, `Java`, `HTML/CSS`
+* **Technologies:** VS Code, RStudio, Jupyter, Word, Excel, PowerPoint, GIMP
+* **Concepts:** Machine Learning, Deep Learning, Statistical Inference/Prediction, Survival Analysis, System Analysis, Linear/Nonlinear Optimization
+* Fluent in both Mandarin Chinese and English
+
+Certifications
+======
+* Microsoft Certified: Azure AI Fundamentals -- _Microsoft_
+  * Recognized for fundamental knowledge of machine learning and artificial intelligence concepts and related Microsoft Azure
+services
+* Leadership and Customer Service - _The Beanstalk Project_
+  * Recognized for the ability to lead and collaborate with various groups of people, as well as the understanding of customer satisfaction
 
 Interests
 ======
@@ -32,9 +48,3 @@ Interests
 * Computer Science:
   * Software development
   * App design
-
-Skills
-======
-* Proficient in `Python`, `Matlab`, and `R`
-* Familiar with `SQL` and `Java`
-* Fluent in both Mandarin Chinese and English
