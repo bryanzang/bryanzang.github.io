@@ -1,6 +1,6 @@
 ---
 title: "Simplex"
-excerpt: "An implementation of Simplex algorithm based on the UWaterloo CO250 textbook \"A Gentle Introduction to Optimization\" by Guenin, Konemann, and Tuncel"
+excerpt: "An implementation of Simplex algorithm based on the University of Waterloo CO250 textbook \"A Gentle Introduction to Optimization\" by Guenin, Konemann, and Tuncel"
 collection: portfolio
 ---
 
