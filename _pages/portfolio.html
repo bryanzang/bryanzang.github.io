@@ -6,7 +6,15 @@ author_profile: true
 ---
 
 {% include base_path %}
-
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        inlineMath: [['\\(','\\)'], ['$', '$']]
+      }
+    });
+  </script>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
 {% for post in site.portfolio %}
   {% include archive-single.html %}
