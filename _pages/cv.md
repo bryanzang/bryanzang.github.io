@@ -11,7 +11,7 @@ redirect_from:
 
 Education
 ======
-* Bachelors of Mathematics, University of Waterloo, 2024
+* Bachelor of Mathematics, University of Waterloo, 2024
   * Majors in Honours Statistics and Honours Computational Mathematics
   * Minor in Computing
   * **Relevant Courses:** Data Structures, Algorithms, Computational Statistics, Neural Networks, Life History & Survival Analysis, Advanced Regression, Estimation and Hypothesis Testing, Stochastic Processes, Databases, Applied Econometrics, intro to Microeconomics/Macroeconomics, Linear/Nonlinear Optimization, Graph Theory, Generalized Linear Models
