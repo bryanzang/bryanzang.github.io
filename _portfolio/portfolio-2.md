@@ -6,7 +6,7 @@ collection: portfolio
 
 
 ## Currently Included Content
-- Formation of LP of form \\(Ax\text{ ? }b\\) with objective function vector and equality constraints ($?$ can denote $=$, $\geq$, or $\leq$)
+- Formation of LP of form \\(Ax\text{ ? }b\\) with objective function vector and equality constraints (\\(?\\) can denote \\(=\\), \\(\geq\\), or \\(\leq\\))
 - Canonical form computation for given LP and proposed basis
 - Simplex computation for given LP
 - Two-phase Simplex computation for given LP
@@ -19,7 +19,7 @@ collection: portfolio
 ## Example Usage
 formulating an LP simple case:
 
-$$\max\left\\{z(x)=v^{\top} x:Ax=b,x\geq 0 \right\\}$$
+\\[\max\left\\{z(x)=v^{\top} x:Ax=b,x\geq 0 \right\\}\\]
 
 where
 
