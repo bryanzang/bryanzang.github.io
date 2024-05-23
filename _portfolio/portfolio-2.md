@@ -4,6 +4,7 @@ excerpt: "An implementation of Simplex algorithm based on the UWaterloo CO250 te
 collection: portfolio
 ---
 
+Link to project [`here`](https://github.com/bryanzang/UW-co250-Simplex)
 
 ## Currently Included Content
 - Formation of LP of form \\(Ax\text{ ? }b\\) with objective function vector and equality constraints (\\(?\\) can denote \\(=\\), \\(\geq\\), or \\(\leq\\))
@@ -49,7 +50,7 @@ b <- c(7,-2,-3)
 v <- c(-1,0,3,7,-1)
 LP <- form.LP(b=b, A=A, v=v)
 ```
-formulating an LP with basis $B=\\{1,4\\}$ and initial $z$ value of $3$:
+formulating an LP with basis \\(B=\\{1,4\\}\\) and initial \\(z\\) value of \\(3\\):
 
 $$\begin{aligned}
     &\max\qquad 3 + \begin{pmatrix}0 & -1 & -2 & 0 & -3\end{pmatrix}x\\
@@ -75,7 +76,7 @@ v <- c(0,-1,-2,0,-3)
 z <- 3
 LP <- form.LP(B, b, A, v, z)
 ```
-optimal solution exists for raw Simplex with given basis $B=\\{3,5\\}$:
+optimal solution exists for raw Simplex with given basis \\(B=\\{3,5\\}\\):
 
 $$\begin{aligned}
     &\max\qquad \begin{pmatrix}-1 & 3 & -5 & 9 & 3\end{pmatrix}x\\
@@ -101,7 +102,7 @@ v <- c(-1,3,-5,9,3)
 LP <- form.LP(B, b, A, v)
 simplex(LP)
 ```
-unbounded LP under raw Simplex with basis $B=\\{2,3,5,6\\}$:
+unbounded LP under raw Simplex with basis \\(B=\\{2,3,5,6\\}\\):
 
 $$\begin{aligned}
     &\max\qquad \begin{pmatrix}0 & 7 & -8 & -2 & -4 & -6\end{pmatrix}x\\
