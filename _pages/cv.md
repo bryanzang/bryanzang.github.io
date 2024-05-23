@@ -25,7 +25,7 @@ Projects
 
 Skills
 ======
-* **Languages:** `R`, `Python`, `Matlab`, `Julia`, `SQL`, `Java`, `HTML/CSS`
+* **Languages:** `R`, `Python`, `Matlab`, `Julia`, `SQL`, `Java`, `LaTex`, `HTML/CSS`
 * **Technologies:** VS Code, RStudio, Jupyter, Word, Excel, PowerPoint, GIMP
 * **Concepts:** Machine Learning, Deep Learning, Statistical Inference/Prediction, Survival Analysis, System Analysis, Linear/Nonlinear Optimization
 * Fluent in both Mandarin Chinese and English
