@@ -1,6 +1,7 @@
 ---
 title: "Simplex"
-excerpt: "An implementation of Simplex algorithm based on the University of Waterloo CO250 textbook \"A Gentle Introduction to Optimization\" by Guenin, Konemann, and Tuncel"
+excerpt: "Implementation of various theories and computations from the textbook _A Gentle Introduction to Optimization_ (Guenin, Konemann,
+and Tuncel) including Simplex algorithm, two-phase Simplex, Bland’s rule, and duality theory."
 collection: portfolio
 ---
 
