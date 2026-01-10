@@ -13,7 +13,7 @@ Please find the PDF version of my CV [here](../files/BryanZang_resume.pdf).
 
 Education
 ======
-* Bachelor of Mathematics, University of Waterloo, 2024
+* Bachelor of Mathematics --- University of Waterloo (Jun 2024)
   * Majors in Honours Statistics and Honours Computational Mathematics
   * Minor in Computer Science
     * Relevant courses:
@@ -21,7 +21,7 @@ Education
 
 Work experience
 ======
-* Research Assistant at Bank of Canada, July 2025
+* Research Assistant --- Bank of Canada (July 2025)
   * Debt Management team under Financial Markets Department
   * Worked closely with Government of Canada (GoC) Finance Ministry to create periodic summaries such as the Debt Management Report (DMR)
   * Visualized key patterns of GoC securities auctions and trades to assess condition of well functioning markets
