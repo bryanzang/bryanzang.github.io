@@ -21,7 +21,7 @@ Education
 
 Work experience
 ======
-* Research Assistant --- Bank of Canada (July 2025)
+* Research Assistant --- Bank of Canada (Jul 2025)
   * Debt Management team under Financial Markets Department
   * Worked closely with Government of Canada (GoC) Finance Ministry to create periodic summaries such as the Debt Management Report (DMR)
   * Visualized key patterns of GoC securities auctions and trades to assess condition of well functioning markets
