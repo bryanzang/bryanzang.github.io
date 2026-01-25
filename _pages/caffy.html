@@ -208,6 +208,7 @@ permalink: /caffy/
         <div class="heart" style="left:30%; animation-duration:14s; animation-delay:-3s;"></div>
         <div class="heart" style="left:90%; animation-duration:21s; animation-delay:-5s;"></div>
         <div class="heart" style="left:15%; animation-duration:28s; animation-delay:-2s;"></div>
+        <div class="heart" style="left:95%; animation-duration:27s; animation-delay:-1s;"></div>
         <div class="heart" style="left:60%; animation-duration:16s; animation-delay:-7s;"></div>
     </div>
 
@@ -216,10 +217,10 @@ permalink: /caffy/
             <h1>Our Days Together</h1>
             <div class="subtitle">A little place for memories, notes, and time</div>
             <div class="counter">
-                <label>
-                    Start date:
-                    <input type="date" id="startDate" />
-                </label>
+                <div>
+                    <strong>Since:</strong> December 9, 2025
+                </div>
+
                 <div class="days" id="daysTogether">— days together</div>
             </div>
         </div>
@@ -265,30 +266,24 @@ permalink: /caffy/
     </div>
 
     <script>
-        const startDateInput = document.getElementById('startDate');
         const daysTogetherEl = document.getElementById('daysTogether');
         const notes = document.querySelectorAll('.note textarea');
+        const FIXED_START_DATE = new Date(2025, 11, 9); // Month is 0-based
 
         function calculateDays() {
-            const value = startDateInput.value;
-            if (!value) {
-                daysTogetherEl.textContent = '— days together';
-                return;
-            }
-            const start = new Date(value);
             const today = new Date();
-            start.setHours(0, 0, 0, 0);
+
+            FIXED_START_DATE.setHours(0, 0, 0, 0);
             today.setHours(0, 0, 0, 0);
-            const diff = Math.floor((today - start) / (1000 * 60 * 60 * 24));
-            daysTogetherEl.textContent = diff + ' days together';
+
+            const diff = Math.floor(
+                (today - FIXED_START_DATE) / (1000 * 60 * 60 * 24)
+            );
+
+            daysTogetherEl.textContent =
+                diff >= 0 ? `${diff} days together` : `0 days together`;
         }
 
-        // Load saved data
-        const savedDate = localStorage.getItem('startDate');
-        if (savedDate) {
-            startDateInput.value = savedDate;
-            calculateDays();
-        }
 
         notes.forEach((note, index) => {
             const saved = localStorage.getItem('note_' + index);
@@ -299,14 +294,9 @@ permalink: /caffy/
             });
         });
 
-        startDateInput.addEventListener('change', () => {
-            localStorage.setItem('startDate', startDateInput.value);
-            calculateDays();
-        });
-
         // Update counter daily
         setInterval(calculateDays, 60 * 60 * 1000);
-
+        
         const musicUrlInput = document.getElementById('musicUrl');
         const embedMusicBtn = document.getElementById('embedMusicBtn');
         const musicEmbed = document.getElementById('musicEmbed');
