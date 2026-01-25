@@ -104,6 +104,44 @@ permalink: /caffy/
             }
         }
 
+
+        .photo-grid {
+            margin-top: 16px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+        }
+
+        .photo-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .photo-item button {
+            position: absolute;
+            top: 6px;
+            right: 6px;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 26px;
+            height: 26px;
+            cursor: pointer;
+            font-size: 14px;
+            line-height: 26px;
+        }
+
+
         .music-frame {
             width: 100%;
             border: none;
@@ -272,6 +310,18 @@ permalink: /caffy/
             </div>
         </div>
 
+        <div class="card">
+            <h2>Shared Pictures</h2>
+            <p style="opacity:0.7; margin-top:4px;">
+                Upload photos to keep and share special moments
+            </p>
+
+            <input type="file" id="photoInput" accept="image/*" multiple style="margin-top:12px;" />
+
+            <div class="photo-grid" id="photoGrid"></div>
+        </div>
+
+
         <footer>
             Made with love • Saved automatically in this browser
         </footer>
@@ -383,6 +433,54 @@ permalink: /caffy/
             const url = musicUrlInput.value.trim();
             if (url) embedMusic(url);
         });
+
+
+        const photoInput = document.getElementById('photoInput');
+        const photoGrid = document.getElementById('photoGrid');
+
+        let photos = JSON.parse(localStorage.getItem('photos') || '[]');
+
+        function renderPhotos() {
+            photoGrid.innerHTML = '';
+
+            photos.forEach((src, index) => {
+                const wrapper = document.createElement('div');
+                wrapper.className = 'photo-item';
+
+                const img = document.createElement('img');
+                img.src = src;
+
+                const removeBtn = document.createElement('button');
+                removeBtn.textContent = '×';
+                removeBtn.onclick = () => {
+                    photos.splice(index, 1);
+                    localStorage.setItem('photos', JSON.stringify(photos));
+                    renderPhotos();
+                };
+
+                wrapper.appendChild(img);
+                wrapper.appendChild(removeBtn);
+                photoGrid.appendChild(wrapper);
+            });
+        }
+
+        photoInput.addEventListener('change', () => {
+            const files = Array.from(photoInput.files);
+
+            files.forEach(file => {
+                const reader = new FileReader();
+                reader.onload = e => {
+                    photos.push(e.target.result);
+                    localStorage.setItem('photos', JSON.stringify(photos));
+                    renderPhotos();
+                };
+                reader.readAsDataURL(file);
+            });
+
+            photoInput.value = '';
+        });
+
+        renderPhotos();
 
     </script>
 </body>
