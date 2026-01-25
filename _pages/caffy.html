@@ -268,20 +268,19 @@ permalink: /caffy/
     <script>
         const daysTogetherEl = document.getElementById('daysTogether');
         const notes = document.querySelectorAll('.note textarea');
-        const FIXED_START_DATE = new Date(2025, 11, 9); // Month is 0-based
+        const start = new Date(2025, 11, 9); // Month is 0-based
 
         function calculateDays() {
             const today = new Date();
 
-            FIXED_START_DATE.setHours(0, 0, 0, 0);
+            start.setHours(0, 0, 0, 0);
             today.setHours(0, 0, 0, 0);
 
-            const diff = Math.floor(
-                (today - FIXED_START_DATE) / (1000 * 60 * 60 * 24)
+            const diff = 1 + Math.floor(
+                (today - start) / (1000 * 60 * 60 * 24)
             );
 
-            daysTogetherEl.textContent =
-                diff >= 0 ? `${diff} days together` : `0 days together`;
+            daysTogetherEl.textContent = diff + ' days together';
         }
 
 
@@ -297,7 +296,7 @@ permalink: /caffy/
         // Update counter daily
         setInterval(calculateDays, 60 * 60 * 1000);
         calculateDays();
-        
+
         const musicUrlInput = document.getElementById('musicUrl');
         const embedMusicBtn = document.getElementById('embedMusicBtn');
         const musicEmbed = document.getElementById('musicEmbed');
