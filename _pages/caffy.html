@@ -6,203 +6,315 @@ permalink: /caffy/
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Our Days Together</title>
-  <style>
-    :root {
-      --bg: #fff7f9;
-      --card: #ffffff;
-      --accent: #ff6b8a;
-      --note1: #fff1a8;
-      --note2: #dff5ea;
-      --note3: #e9e4ff;
-      --text: #2b2b2b;
-    }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Days Together</title>
+    <style>
+        :root {
+            --bg: #fff7f9;
+            --card: #ffffff;
+            --accent: #ff6b8a;
+            --note1: #fff1a8;
+            --note2: #dff5ea;
+            --note3: #e9e4ff;
+            --text: #2b2b2b;
+        }
 
-    * { box-sizing: border-box; }
+        * {
+            box-sizing: border-box;
+        }
 
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      padding: 24px;
-    }
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            padding: 24px;
+        }
 
-    .container {
-      width: 100%;
-      max-width: 900px;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 24px;
-    }
+        .music-frame {
+            width: 100%;
+            border: none;
+            border-radius: 12px;
+        }
 
-    .card {
-      background: var(--card);
-      border-radius: 16px;
-      padding: 20px 24px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-    }
+        .container {
+            width: 100%;
+            max-width: 900px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
 
-    h1 {
-      margin: 0 0 8px 0;
-      font-size: 1.6rem;
-      text-align: center;
-    }
+        .card {
+            background: var(--card);
+            border-radius: 16px;
+            padding: 20px 24px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        }
 
-    .subtitle {
-      text-align: center;
-      opacity: 0.7;
-      margin-bottom: 16px;
-    }
+        h1 {
+            margin: 0 0 8px 0;
+            font-size: 1.6rem;
+            text-align: center;
+        }
 
-    .counter {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      align-items: center;
-      justify-content: center;
-    }
+        .subtitle {
+            text-align: center;
+            opacity: 0.7;
+            margin-bottom: 16px;
+        }
 
-    .counter input[type="date"] {
-      padding: 10px 12px;
-      border-radius: 8px;
-      border: 1px solid #ddd;
-      font-size: 0.95rem;
-    }
+        .counter {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            align-items: center;
+            justify-content: center;
+        }
 
-    .days {
-      font-size: 1.4rem;
-      font-weight: 600;
-      color: var(--accent);
-    }
+        .counter input[type="date"] {
+            padding: 10px 12px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            font-size: 0.95rem;
+        }
 
-    .notes {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-    }
+        .days {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--accent);
+        }
 
-    .note {
-      min-height: 160px;
-      padding: 16px;
-      border-radius: 12px;
-      box-shadow: 0 8px 18px rgba(0,0,0,0.12);
-      display: flex;
-      flex-direction: column;
-    }
+        .notes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
 
-    .note textarea {
-      flex: 1;
-      resize: none;
-      border: none;
-      outline: none;
-      background: transparent;
-      font-size: 0.95rem;
-      line-height: 1.4;
-    }
+        .note {
+            min-height: 160px;
+            padding: 16px;
+            border-radius: 12px;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+            display: flex;
+            flex-direction: column;
+        }
 
-    .note small {
-      opacity: 0.6;
-      margin-top: 8px;
-      text-align: right;
-    }
+        .note textarea {
+            flex: 1;
+            resize: none;
+            border: none;
+            outline: none;
+            background: transparent;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
 
-    .note.yellow { background: var(--note1); }
-    .note.green { background: var(--note2); }
-    .note.purple { background: var(--note3); }
+        .note small {
+            opacity: 0.6;
+            margin-top: 8px;
+            text-align: right;
+        }
 
-    footer {
-      text-align: center;
-      font-size: 0.8rem;
-      opacity: 0.5;
-    }
-  </style>
+        .note.yellow {
+            background: var(--note1);
+        }
+
+        .note.green {
+            background: var(--note2);
+        }
+
+        .note.purple {
+            background: var(--note3);
+        }
+
+        footer {
+            text-align: center;
+            font-size: 0.8rem;
+            opacity: 0.5;
+        }
+    </style>
 </head>
+
 <body>
-  <div class="container">
-    <div class="card">
-      <h1>Our Days Together</h1>
-      <div class="subtitle">A little place for memories, notes, and time</div>
-      <div class="counter">
-        <label>
-          Start date:
-          <input type="date" id="startDate" />
-        </label>
-        <div class="days" id="daysTogether">— days together</div>
-      </div>
+    <div class="container">
+        <div class="card">
+            <h1>Our Days Together</h1>
+            <div class="subtitle">A little place for memories, notes, and time</div>
+            <div class="counter">
+                <label>
+                    Start date:
+                    <input type="date" id="startDate" />
+                </label>
+                <div class="days" id="daysTogether">— days together</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Shared Music</h2>
+            <p style="opacity:0.7; margin-top:4px;">
+                Paste a YouTube or Spotify link to share a song or playlist
+            </p>
+            <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:12px;">
+                <input type="text" id="musicUrl" placeholder="YouTube or Spotify URL"
+                    style="flex:1; min-width:240px; padding:10px 12px; border-radius:8px; border:1px solid #ddd;" />
+                <button id="embedMusicBtn"
+                    style="padding:10px 16px; border-radius:8px; border:none; background:var(--accent); color:#fff; font-weight:600; cursor:pointer;">
+                    Embed
+                </button>
+            </div>
+            <div id="musicEmbed" style="margin-top:16px;"></div>
+        </div>
+
+
+        <div class="card">
+            <h2>Sticky Notes</h2>
+            <div class="notes">
+                <div class="note yellow">
+                    <textarea placeholder="Write something sweet..."></textarea>
+                    <small>Note 1</small>
+                </div>
+                <div class="note green">
+                    <textarea placeholder="Plans, reminders, or thoughts..."></textarea>
+                    <small>Note 2</small>
+                </div>
+                <div class="note purple">
+                    <textarea placeholder="Anything you want to remember..."></textarea>
+                    <small>Note 3</small>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            Made with love • Saved automatically in this browser
+        </footer>
     </div>
 
-    <div class="card">
-      <h2>Sticky Notes</h2>
-      <div class="notes">
-        <div class="note yellow">
-          <textarea placeholder="Write something sweet..."></textarea>
-          <small>Note 1</small>
-        </div>
-        <div class="note green">
-          <textarea placeholder="Plans, reminders, or thoughts..."></textarea>
-          <small>Note 2</small>
-        </div>
-        <div class="note purple">
-          <textarea placeholder="Anything you want to remember..."></textarea>
-          <small>Note 3</small>
-        </div>
-      </div>
-    </div>
+    <script>
+        const startDateInput = document.getElementById('startDate');
+        const daysTogetherEl = document.getElementById('daysTogether');
+        const notes = document.querySelectorAll('.note textarea');
 
-    <footer>
-      Made with love • Saved automatically in this browser
-    </footer>
-  </div>
+        function calculateDays() {
+            const value = startDateInput.value;
+            if (!value) {
+                daysTogetherEl.textContent = '— days together';
+                return;
+            }
+            const start = new Date(value);
+            const today = new Date();
+            start.setHours(0, 0, 0, 0);
+            today.setHours(0, 0, 0, 0);
+            const diff = Math.floor((today - start) / (1000 * 60 * 60 * 24));
+            daysTogetherEl.textContent = diff + ' days together';
+        }
 
-  <script>
-    const startDateInput = document.getElementById('startDate');
-    const daysTogetherEl = document.getElementById('daysTogether');
-    const notes = document.querySelectorAll('.note textarea');
+        // Load saved data
+        const savedDate = localStorage.getItem('startDate');
+        if (savedDate) {
+            startDateInput.value = savedDate;
+            calculateDays();
+        }
 
-    function calculateDays() {
-      const value = startDateInput.value;
-      if (!value) {
-        daysTogetherEl.textContent = '— days together';
-        return;
-      }
-      const start = new Date(value);
-      const today = new Date();
-      start.setHours(0,0,0,0);
-      today.setHours(0,0,0,0);
-      const diff = Math.floor((today - start) / (1000 * 60 * 60 * 24));
-      daysTogetherEl.textContent = diff + ' days together';
-    }
+        notes.forEach((note, index) => {
+            const saved = localStorage.getItem('note_' + index);
+            if (saved) note.value = saved;
 
-    // Load saved data
-    const savedDate = localStorage.getItem('startDate');
-    if (savedDate) {
-      startDateInput.value = savedDate;
-      calculateDays();
-    }
+            note.addEventListener('input', () => {
+                localStorage.setItem('note_' + index, note.value);
+            });
+        });
 
-    notes.forEach((note, index) => {
-      const saved = localStorage.getItem('note_' + index);
-      if (saved) note.value = saved;
+        startDateInput.addEventListener('change', () => {
+            localStorage.setItem('startDate', startDateInput.value);
+            calculateDays();
+        });
 
-      note.addEventListener('input', () => {
-        localStorage.setItem('note_' + index, note.value);
-      });
-    });
+        // Update counter daily
+        setInterval(calculateDays, 60 * 60 * 1000);
 
-    startDateInput.addEventListener('change', () => {
-      localStorage.setItem('startDate', startDateInput.value);
-      calculateDays();
-    });
+        const musicUrlInput = document.getElementById('musicUrl');
+        const embedMusicBtn = document.getElementById('embedMusicBtn');
+        const musicEmbed = document.getElementById('musicEmbed');
 
-    // Update counter daily
-    setInterval(calculateDays, 60 * 60 * 1000);
-  </script>
+        function getEmbedUrl(url) {
+            try {
+                // YouTube
+                if (url.includes('youtube.com') || url.includes('youtu.be')) {
+                    let videoId = '';
+
+                    if (url.includes('youtu.be')) {
+                        videoId = url.split('youtu.be/')[1].split('?')[0];
+                    } else {
+                        const params = new URL(url).searchParams;
+                        videoId = params.get('v');
+                    }
+
+                    if (!videoId) return null;
+                    return {
+                        src: `https://www.youtube.com/embed/${videoId}`,
+                        height: 315
+                    };
+                }
+
+                // Spotify
+                if (url.includes('spotify.com')) {
+                    const cleanUrl = url.split('?')[0];
+                    const path = new URL(cleanUrl).pathname;
+                    return {
+                        src: `https://open.spotify.com/embed${path}`,
+                        height: 152
+                    };
+                }
+            } catch {
+                return null;
+            }
+
+            return null;
+        }
+
+        function embedMusic(url) {
+            const embed = getEmbedUrl(url);
+
+            if (!embed) {
+                musicEmbed.innerHTML =
+                    '<p style="color:#c00;">Invalid or unsupported link.</p>';
+                return;
+            }
+
+            const iframe = document.createElement('iframe');
+            iframe.src = embed.src;
+            iframe.height = embed.height;
+            iframe.className = 'music-frame';
+            iframe.allow =
+                'autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture';
+            iframe.loading = 'lazy';
+
+            musicEmbed.innerHTML = '';
+            musicEmbed.appendChild(iframe);
+
+            localStorage.setItem('musicUrl', url);
+        }
+
+        // Load saved music on page load
+        const savedMusicUrl = localStorage.getItem('musicUrl');
+        if (savedMusicUrl) {
+            musicUrlInput.value = savedMusicUrl;
+            embedMusic(savedMusicUrl);
+        }
+
+        embedMusicBtn.addEventListener('click', () => {
+            const url = musicUrlInput.value.trim();
+            if (url) embedMusic(url);
+        });
+
+    </script>
 </body>
+
 </html>
