@@ -38,6 +38,18 @@ permalink: /caffy/
             overflow-x: hidden;
         }
 
+        .fixed-date {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 12px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            background: #fff;
+            font-size: 0.95rem;
+        }
+
+
         /* Animated heart background */
         .hearts-bg {
             position: fixed;
@@ -217,10 +229,10 @@ permalink: /caffy/
             <h1>Our Days Together</h1>
             <div class="subtitle">A little place for memories, notes, and time</div>
             <div class="counter">
-                <div>
-                    <strong>Since:</strong> December 9, 2025
+                <div class="fixed-date">
+                    <span>Since:</span>
+                    <strong>December&nbsp;9,&nbsp;2025</strong>
                 </div>
-
                 <div class="days" id="daysTogether">— days together</div>
             </div>
         </div>
