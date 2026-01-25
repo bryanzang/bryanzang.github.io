@@ -108,15 +108,18 @@ permalink: /caffy/
         .photo-grid {
             margin-top: 16px;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 12px;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 16px;
         }
 
         .photo-item {
             position: relative;
+            height: 170px;
+            /* matches sticky note height */
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+            background: #fff;
         }
 
         .photo-item img {
@@ -139,6 +142,37 @@ permalink: /caffy/
             cursor: pointer;
             font-size: 14px;
             line-height: 26px;
+        }
+
+        .photo-drop {
+            margin-top: 14px;
+            padding: 32px;
+            border-radius: 14px;
+            border: 2px dashed #ff9bb5;
+            background: #fff0f6;
+            text-align: center;
+            cursor: pointer;
+            transition: background 0.2s ease, border-color 0.2s ease;
+        }
+
+        .photo-drop p {
+            margin: 0;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #ff6b8a;
+        }
+
+        .photo-drop span {
+            display: block;
+            margin-top: 4px;
+            font-size: 0.85rem;
+            font-weight: normal;
+            opacity: 0.7;
+        }
+
+        .photo-drop.dragover {
+            background: #ffe0eb;
+            border-color: #ff6b8a;
         }
 
 
@@ -316,7 +350,10 @@ permalink: /caffy/
                 Upload photos to keep and share special moments
             </p>
 
-            <input type="file" id="photoInput" accept="image/*" multiple style="margin-top:12px;" />
+            <div class="photo-drop" id="photoDrop">
+                <p>Drag image here<br><span>or click to upload</span></p>
+                <input type="file" id="photoInput" accept="image/*" multiple hidden />
+            </div>
 
             <div class="photo-grid" id="photoGrid"></div>
         </div>
@@ -481,6 +518,40 @@ permalink: /caffy/
         });
 
         renderPhotos();
+
+        const photoDrop = document.getElementById('photoDrop');
+
+        photoDrop.addEventListener('click', () => {
+            photoInput.click();
+        });
+
+        photoDrop.addEventListener('dragover', e => {
+            e.preventDefault();
+            photoDrop.classList.add('dragover');
+        });
+
+        photoDrop.addEventListener('dragleave', () => {
+            photoDrop.classList.remove('dragover');
+        });
+
+        photoDrop.addEventListener('drop', e => {
+            e.preventDefault();
+            photoDrop.classList.remove('dragover');
+
+            const files = Array.from(e.dataTransfer.files).filter(file =>
+                file.type.startsWith('image/')
+            );
+
+            files.forEach(file => {
+                const reader = new FileReader();
+                reader.onload = e => {
+                    photos.push(e.target.result);
+                    localStorage.setItem('photos', JSON.stringify(photos));
+                    renderPhotos();
+                };
+                reader.readAsDataURL(file);
+            });
+        });
 
     </script>
 </body>
