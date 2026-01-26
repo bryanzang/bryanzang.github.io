@@ -370,9 +370,7 @@ permalink: /caffy/
         // Supabase client
         const SUPABASE_URL = 'https://lojonhvzayuemeomgrwr.supabase.co';
         const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imxvam9uaHZ6YXl1ZW1lb21ncndyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjkzODEwMTYsImV4cCI6MjA4NDk1NzAxNn0.6N2J-kbePybGGfa56usWsw-MhVoNZOzZpe0E8Y3esh0';
-        const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
-            auth: { persistSession: false } // keeps everything in memory, avoids localStorage issues
-        });
+        const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
         // --- Days Together Counter ---
         const daysTogetherEl = document.getElementById('daysTogether');
