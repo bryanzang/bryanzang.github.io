@@ -367,50 +367,43 @@ permalink: /caffy/
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/supabase.min.js"></script>
 
     <script>
+        // Supabase client
         const SUPABASE_URL = 'https://lojonhvzayuemeomgrwr.supabase.co';
-        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imxvam9uaHZ6YXl1ZW1lb21ncndyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjkzODEwMTYsImV4cCI6MjA4NDk1NzAxNn0.6N2J-kbePybGGfa56usWsw-MhVoNZOzZpe0E8Y3esh0.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imxvam9uaHZ6YXl1ZW1lb21ncndyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjkzODEwMTYsImV4cCI6MjA4NDk1NzAxNn0.6N2J-kbePybGGfa56usWsw-MhVoNZOzZpe0E8Y3esh0';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imxvam9uaHZ6YXl1ZW1lb21ncndyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjkzODEwMTYsImV4cCI6MjA4NDk1NzAxNn0.6N2J-kbePybGGfa56usWsw-MhVoNZOzZpe0E8Y3esh0';
         const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
-            auth: {
-                persistSession: false
-            }
+            auth: { persistSession: false } // keeps everything in memory, avoids localStorage issues
         });
-        //const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-        const daysTogetherEl = document.getElementById('daysTogether');
-        const start = new Date(2025, 11, 9); // Month is 0-based
 
+        // --- Days Together Counter ---
+        const daysTogetherEl = document.getElementById('daysTogether');
+        const start = new Date(2025, 11, 9); // December 9, 2025 (month 0-indexed)
         function calculateDays() {
             const today = new Date();
             start.setHours(0, 0, 0, 0);
             today.setHours(0, 0, 0, 0);
-            const diff = 1 + Math.floor(
-                (today - start) / (1000 * 60 * 60 * 24)
-            );
+            const diff = 1 + Math.floor((today - start) / (1000 * 60 * 60 * 24));
             daysTogetherEl.textContent = diff + ' days together';
         }
+        calculateDays();
+        setInterval(calculateDays, 60 * 60 * 1000); // update hourly
 
-        async function testConnection() {
-            const { data, error } = await supabase.from('notes').select('*');
-            if (error) console.error('Supabase error:', error);
-            else console.log('Supabase notes:', data);
-        }
-        testConnection();
-
+        // --- Sticky Notes ---
         const notes = document.querySelectorAll('.note textarea');
-        // Load notes from Supabase
+
         async function loadNotes() {
             const { data } = await supabase
                 .from('notes')
                 .select('*')
                 .order({ id: 'asc' });
-
-            data.forEach((note, index) => {
-                if (notes[index]) notes[index].value = note.content;
-            });
+            if (data) {
+                data.forEach((note, index) => {
+                    if (notes[index]) notes[index].value = note.content;
+                });
+            }
         }
 
         loadNotes();
 
-        // Save notes on input
         notes.forEach((note, index) => {
             note.addEventListener('input', async () => {
                 await supabase
@@ -419,23 +412,31 @@ permalink: /caffy/
             });
         });
 
-        // Update counter daily
-        setInterval(calculateDays, 60 * 60 * 1000);
-        calculateDays();
-
+        // --- Shared Music ---
         const musicUrlInput = document.getElementById('musicUrl');
         const embedMusicBtn = document.getElementById('embedMusicBtn');
         const musicEmbed = document.getElementById('musicEmbed');
 
-        // Load music from Supabase
+        function embedMusic(url) {
+            let embedHTML = '';
+            if (url.includes('youtube.com') || url.includes('youtu.be')) {
+                const videoId = url.split('v=')[1]?.split('&')[0] || url.split('/').pop();
+                embedHTML = `<iframe class="music-frame" width="100%" height="166" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen></iframe>`;
+            } else if (url.includes('spotify.com')) {
+                embedHTML = `<iframe class="music-frame" src="https://open.spotify.com/embed/${url.split('spotify.com/')[1]}" width="100%" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>`;
+            } else {
+                embedHTML = `<p style="color: red;">Invalid URL</p>`;
+            }
+            musicEmbed.innerHTML = embedHTML;
+        }
+
         async function loadMusic() {
             const { data } = await supabase
                 .from('music')
                 .select('*')
                 .eq('id', 1)
                 .single();
-
-            if (data && data.url) {
+            if (data?.url) {
                 musicUrlInput.value = data.url;
                 embedMusic(data.url);
             }
@@ -443,39 +444,47 @@ permalink: /caffy/
 
         loadMusic();
 
-        // Save music on click
         embedMusicBtn.addEventListener('click', async () => {
             const url = musicUrlInput.value.trim();
             if (!url) return;
-
             await supabase
                 .from('music')
                 .upsert({ id: 1, url });
-
             embedMusic(url);
         });
 
+        // --- Photo Upload ---
         const photoInput = document.getElementById('photoInput');
         const photoDrop = document.getElementById('photoDrop');
         const photoGrid = document.getElementById('photoGrid');
-        // photos array used for rendering
         let photos = [];
 
-        // Load photos from Supabase
+        function renderPhotos() {
+            photoGrid.innerHTML = '';
+            photos.forEach(url => {
+                const div = document.createElement('div');
+                div.className = 'photo-item';
+                div.innerHTML = `<img src="${url}" alt="Shared photo" />`;
+                photoGrid.appendChild(div);
+            });
+        }
+
         async function loadPhotos() {
             const { data } = await supabase
                 .from('photos')
                 .select('*')
                 .order({ added_at: 'asc' });
-            photos = data.map(p => p.url);
-            renderPhotos();
+            if (data) {
+                photos = data.map(p => p.url);
+                renderPhotos();
+            }
         }
+
         loadPhotos();
 
-        // Handle file input
-        photoInput.addEventListener('change', async () => {
-            const files = Array.from(photoInput.files);
+        async function handleFiles(files) {
             for (const file of files) {
+                if (!file.type.startsWith('image/')) continue;
                 const reader = new FileReader();
                 reader.onload = async e => {
                     const url = e.target.result;
@@ -485,30 +494,32 @@ permalink: /caffy/
                 };
                 reader.readAsDataURL(file);
             }
+        }
+
+        photoInput.addEventListener('change', async () => {
+            await handleFiles(photoInput.files);
             photoInput.value = '';
         });
 
-        // Handle drag-and-drop
+        photoDrop.addEventListener('dragover', e => {
+            e.preventDefault();
+            photoDrop.classList.add('dragover');
+        });
+
+        photoDrop.addEventListener('dragleave', e => {
+            e.preventDefault();
+            photoDrop.classList.remove('dragover');
+        });
+
         photoDrop.addEventListener('drop', async e => {
             e.preventDefault();
             photoDrop.classList.remove('dragover');
-
-            const files = Array.from(e.dataTransfer.files).filter(file =>
-                file.type.startsWith('image/')
-            );
-
-            for (const file of files) {
-                const reader = new FileReader();
-                reader.onload = async ev => {
-                    const url = ev.target.result;
-                    await supabase.from('photos').insert({ url });
-                    photos.push(url);
-                    renderPhotos();
-                };
-                reader.readAsDataURL(file);
-            }
+            await handleFiles(e.dataTransfer.files);
         });
+
+        photoDrop.addEventListener('click', () => photoInput.click());
     </script>
+
 </body>
 
 </html>
