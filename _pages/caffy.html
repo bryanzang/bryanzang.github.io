@@ -368,10 +368,15 @@ permalink: /caffy/
     <script src="/js/supabase.min.js"></script>
 
     <script>
-        
+        import { createClient } from '@supabase/supabase-js'
         const SUPABASE_URL = 'https://lojonhvzayuemeomgrwr.supabase.co';
         const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imxvam9uaHZ6YXl1ZW1lb21ncndyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjkzODEwMTYsImV4cCI6MjA4NDk1NzAxNn0.6N2J-kbePybGGfa56usWsw-MhVoNZOzZpe0E8Y3esh0.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imxvam9uaHZ6YXl1ZW1lb21ncndyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjkzODEwMTYsImV4cCI6MjA4NDk1NzAxNn0.6N2J-kbePybGGfa56usWsw-MhVoNZOzZpe0E8Y3esh0';
-        const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+            auth: {
+                persistSession: false
+            }
+        });
+        //const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
         const daysTogetherEl = document.getElementById('daysTogether');
         const start = new Date(2025, 11, 9); // Month is 0-based
 
