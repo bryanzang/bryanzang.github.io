@@ -279,7 +279,6 @@ permalink: /caffy/
             opacity: 0.5;
         }
     </style>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/supabase.min.js"></script>
 </head>
 
 <body>
@@ -364,28 +363,23 @@ permalink: /caffy/
             Made with love • Saved automatically in this browser
         </footer>
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/supabase.min.js"></script>
 
     <script>
-        // Replace these with your Supabase project values
         const SUPABASE_URL = 'https://lojonhvzayuemeomgrwr.supabase.co';
         const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imxvam9uaHZ6YXl1ZW1lb21ncndyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjkzODEwMTYsImV4cCI6MjA4NDk1NzAxNn0.6N2J-kbePybGGfa56usWsw-MhVoNZOzZpe0E8Y3esh0.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imxvam9uaHZ6YXl1ZW1lb21ncndyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjkzODEwMTYsImV4cCI6MjA4NDk1NzAxNn0.6N2J-kbePybGGfa56usWsw-MhVoNZOzZpe0E8Y3esh0';
         const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
         const daysTogetherEl = document.getElementById('daysTogether');
-        /* const notes = document.querySelectorAll('.note textarea'); */
         const start = new Date(2025, 11, 9); // Month is 0-based
 
         function calculateDays() {
             const today = new Date();
-
             start.setHours(0, 0, 0, 0);
             today.setHours(0, 0, 0, 0);
-
             const diff = 1 + Math.floor(
                 (today - start) / (1000 * 60 * 60 * 24)
             );
-
             daysTogetherEl.textContent = diff + ' days together';
         }
 
@@ -394,10 +388,9 @@ permalink: /caffy/
             if (error) console.error('Supabase error:', error);
             else console.log('Supabase notes:', data);
         }
-
         testConnection();
 
-
+        const notes = document.querySelectorAll('.note textarea');
         // Load notes from Supabase
         async function loadNotes() {
             const { data } = await supabase
@@ -421,8 +414,6 @@ permalink: /caffy/
             });
         });
 
-
-
         // Update counter daily
         setInterval(calculateDays, 60 * 60 * 1000);
         calculateDays();
@@ -430,9 +421,6 @@ permalink: /caffy/
         const musicUrlInput = document.getElementById('musicUrl');
         const embedMusicBtn = document.getElementById('embedMusicBtn');
         const musicEmbed = document.getElementById('musicEmbed');
-
-
-
 
         // Load music from Supabase
         async function loadMusic() {
@@ -462,82 +450,9 @@ permalink: /caffy/
             embedMusic(url);
         });
 
-
-        /* function getEmbedUrl(url) {
-            try {
-                // YouTube
-                if (url.includes('youtube.com') || url.includes('youtu.be')) {
-                    let videoId = '';
-
-                    if (url.includes('youtu.be')) {
-                        videoId = url.split('youtu.be/')[1].split('?')[0];
-                    } else {
-                        const params = new URL(url).searchParams;
-                        videoId = params.get('v');
-                    }
-
-                    if (!videoId) return null;
-                    return {
-                        src: `https://www.youtube.com/embed/${videoId}`,
-                        height: 315
-                    };
-                }
-
-                // Spotify
-                if (url.includes('spotify.com')) {
-                    const cleanUrl = url.split('?')[0];
-                    const path = new URL(cleanUrl).pathname;
-                    return {
-                        src: `https://open.spotify.com/embed${path}`,
-                        height: 152
-                    };
-                }
-            } catch {
-                return null;
-            }
-
-            return null;
-        }
-
-        function embedMusic(url) {
-            const embed = getEmbedUrl(url);
-
-            if (!embed) {
-                musicEmbed.innerHTML =
-                    '<p style="color:#c00;">Invalid or unsupported link.</p>';
-                return;
-            }
-
-            const iframe = document.createElement('iframe');
-            iframe.src = embed.src;
-            iframe.height = embed.height;
-            iframe.className = 'music-frame';
-            iframe.allow =
-                'autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture';
-            iframe.loading = 'lazy';
-
-            musicEmbed.innerHTML = '';
-            musicEmbed.appendChild(iframe);
-
-            localStorage.setItem('musicUrl', url);
-        }
-
-        // Load saved music on page load
-        const savedMusicUrl = localStorage.getItem('musicUrl');
-        if (savedMusicUrl) {
-            musicUrlInput.value = savedMusicUrl;
-            embedMusic(savedMusicUrl);
-        }
-
-        embedMusicBtn.addEventListener('click', () => {
-            const url = musicUrlInput.value.trim();
-            if (url) embedMusic(url);
-        }); */
-
-
-
-
-
+        const photoInput = document.getElementById('photoInput');
+        const photoDrop = document.getElementById('photoDrop');
+        const photoGrid = document.getElementById('photoGrid');
         // photos array used for rendering
         let photos = [];
 
@@ -588,92 +503,6 @@ permalink: /caffy/
                 reader.readAsDataURL(file);
             }
         });
-
-
-        // Drag-and-drop photo handler remains the same, just insert via supabase
-
-
-        /* const photoInput = document.getElementById('photoInput');
-        const photoGrid = document.getElementById('photoGrid');
-
-        let photos = JSON.parse(localStorage.getItem('photos') || '[]');
-
-        function renderPhotos() {
-            photoGrid.innerHTML = '';
-
-            photos.forEach((src, index) => {
-                const wrapper = document.createElement('div');
-                wrapper.className = 'photo-item';
-
-                const img = document.createElement('img');
-                img.src = src;
-
-                const removeBtn = document.createElement('button');
-                removeBtn.textContent = '×';
-                removeBtn.onclick = () => {
-                    photos.splice(index, 1);
-                    localStorage.setItem('photos', JSON.stringify(photos));
-                    renderPhotos();
-                };
-
-                wrapper.appendChild(img);
-                wrapper.appendChild(removeBtn);
-                photoGrid.appendChild(wrapper);
-            });
-        }
-
-        photoInput.addEventListener('change', () => {
-            const files = Array.from(photoInput.files);
-
-            files.forEach(file => {
-                const reader = new FileReader();
-                reader.onload = e => {
-                    photos.push(e.target.result);
-                    localStorage.setItem('photos', JSON.stringify(photos));
-                    renderPhotos();
-                };
-                reader.readAsDataURL(file);
-            });
-
-            photoInput.value = '';
-        });
-
-        renderPhotos();
-
-        const photoDrop = document.getElementById('photoDrop');
-
-        photoDrop.addEventListener('click', () => {
-            photoInput.click();
-        });
-
-        photoDrop.addEventListener('dragover', e => {
-            e.preventDefault();
-            photoDrop.classList.add('dragover');
-        });
-
-        photoDrop.addEventListener('dragleave', () => {
-            photoDrop.classList.remove('dragover');
-        });
-
-        photoDrop.addEventListener('drop', e => {
-            e.preventDefault();
-            photoDrop.classList.remove('dragover');
-
-            const files = Array.from(e.dataTransfer.files).filter(file =>
-                file.type.startsWith('image/')
-            );
-
-            files.forEach(file => {
-                const reader = new FileReader();
-                reader.onload = e => {
-                    photos.push(e.target.result);
-                    localStorage.setItem('photos', JSON.stringify(photos));
-                    renderPhotos();
-                };
-                reader.readAsDataURL(file);
-            });
-        }); */
-
     </script>
 </body>
 
