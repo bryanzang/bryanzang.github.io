@@ -388,6 +388,14 @@ permalink: /caffy/
             daysTogetherEl.textContent = diff + ' days together';
         }
 
+        async function testConnection() {
+            const { data, error } = await supabase.from('notes').select('*');
+            if (error) console.error('Supabase error:', error);
+            else console.log('Supabase notes:', data);
+        }
+
+        testConnection();
+
 
         // Load notes from Supabase
         async function loadNotes() {
