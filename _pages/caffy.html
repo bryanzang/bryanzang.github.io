@@ -108,13 +108,14 @@ permalink: /caffy/
         .photo-grid {
             margin-top: 16px;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            grid-template-columns: repeat(3, 250px);
             gap: 16px;
+            justify-content: center;
         }
 
         .photo-item {
             position: relative;
-            height: 170px;
+            height: 250px;
             /* matches sticky note height */
             aspect-ratio: 1 / 1;
             border-radius: 12px;
@@ -122,6 +123,7 @@ permalink: /caffy/
             box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
             background: #fff;
         }
+
         .photo-item img {
             width: 100%;
             height: 100%;
@@ -174,6 +176,27 @@ permalink: /caffy/
             background: #ffe0eb;
             border-color: #ff6b8a;
         }
+
+        .photo-item button.photo-delete {
+            position: absolute;
+            top: 6px;
+            right: 6px;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(0, 0, 0, 0.65);
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .photo-item:hover button.photo-delete {
+            opacity: 1;
+        }
+
 
         .music-wrapper {
             position: relative;
@@ -481,24 +504,53 @@ permalink: /caffy/
 
         function renderPhotos() {
             photoGrid.innerHTML = '';
-            photos.forEach(url => {
+
+            photos.slice(0, 3).forEach((photo) => {
                 const div = document.createElement('div');
                 div.className = 'photo-item';
-                div.innerHTML = `<img src="${url}" alt="Shared photo" />`;
+
+                div.innerHTML = `
+                    <img src="${photo.url}" alt="Shared photo" />
+                    <button class="photo-delete">&times;</button>
+                `;
+
+                div.querySelector('.photo-delete')
+                    .addEventListener('click', async () => {
+                        await deletePhoto(photo.id);
+                    });
+
                 photoGrid.appendChild(div);
             });
+        }
+
+        async function deletePhoto(photoId) {
+            const { error } = await supabase
+                .from('photos')
+                .delete()
+                .eq('id', photoId);
+
+            if (error) {
+                console.error('Delete photo error:', error);
+                return;
+            }
+
+            photos = photos.filter(p => p.id !== photoId);
+            renderPhotos();
         }
 
         async function loadPhotos() {
             const { data, error } = await supabase
                 .from('photos')
-                .select('*')
+                .select('id, url')
                 .order('added_at', { ascending: true });
-            if (error) console.error('Load photos error:', error);
-            if (data) {
-                photos = data.map(p => p.url);
-                renderPhotos();
+
+            if (error) {
+                console.error('Load photos error:', error);
+                return;
             }
+
+            photos = data;
+            renderPhotos();
         }
 
         loadPhotos();
@@ -506,12 +558,19 @@ permalink: /caffy/
         async function handleFiles(files) {
             for (const file of files) {
                 if (!file.type.startsWith('image/')) continue;
+
                 const reader = new FileReader();
                 reader.onload = async e => {
-                    const url = e.target.result;
-                    await supabase.from('photos').insert({ url });
-                    photos.push(url);
-                    renderPhotos();
+                    const { data, error } = await supabase
+                        .from('photos')
+                        .insert({ url: e.target.result })
+                        .select()
+                        .single();
+
+                    if (!error && data) {
+                        photos.push(data);
+                        renderPhotos();
+                    }
                 };
                 reader.readAsDataURL(file);
             }
