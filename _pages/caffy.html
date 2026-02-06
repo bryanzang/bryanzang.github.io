@@ -119,7 +119,7 @@ permalink: /caffy/
             max-height: 250px;
             width: 250px;
             height: 250px;
-            border-radius: 12px;
+            border-radius: 5px;
             overflow: hidden;
             box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
             background: #fff;
@@ -584,7 +584,7 @@ permalink: /caffy/
                         const ctx = canvas.getContext('2d');
                         ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
-                        const resizedBase64 = canvas.toDataURL('image/jpeg', 0.8);
+                        const resizedBase64 = canvas.toDataURL('image/jpeg', 0.9);
 
                         const { data, error } = await supabase
                             .from('photos')
