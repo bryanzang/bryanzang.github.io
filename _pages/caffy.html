@@ -433,8 +433,13 @@ permalink: /caffy/
                 .from('music')
                 .select('*')
                 .eq('id', 1)
-                .single();
-            if (error) console.error('Load music error:', error);
+                .maybeSingle();
+
+            if (error) {
+                console.error('Load music error:', error);
+                return;
+            }
+
             if (data?.url) {
                 musicUrlInput.value = data.url;
                 embedMusic(data.url);
