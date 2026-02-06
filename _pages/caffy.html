@@ -210,26 +210,26 @@ permalink: /caffy/
 
 
         .music-wrapper {
-            position: relative;
             width: 100%;
-            aspect-ratio: 16 / 9;
-            /* YouTube standard */
             border-radius: 12px;
             overflow: hidden;
+            transition: height 0.2s ease, aspect-ratio 0.2s ease;
+        }
+
+        /* YouTube: responsive video */
+        .music-wrapper.video {
+            aspect-ratio: 16 / 9;
+        }
+
+        /* Spotify: compact audio player */
+        .music-wrapper.audio {
+            height: 80px;
         }
 
         .music-wrapper iframe {
-            position: absolute;
-            inset: 0;
             width: 100%;
             height: 100%;
             border: none;
-        }
-
-        .music-frame {
-            width: 100%;
-            border: none;
-            border-radius: 12px;
         }
 
         .container {
@@ -467,14 +467,35 @@ permalink: /caffy/
 
         function embedMusic(url) {
             let embedHTML = '';
+
             if (url.includes('youtube.com') || url.includes('youtu.be')) {
-                const videoId = url.split('v=')[1]?.split('&')[0] || url.split('/').pop();
-                embedHTML = `<div class="music-wrapper"><iframe src="https://www.youtube.com/embed/${videoId}" allowfullscreen></iframe></div>`;
+                const videoId =
+                    url.split('v=')[1]?.split('&')[0] ||
+                    url.split('/').pop();
+
+                embedHTML = `
+            <div class="music-wrapper video">
+                <iframe
+                    src="https://www.youtube.com/embed/${videoId}"
+                    allowfullscreen
+                ></iframe>
+            </div>
+        `;
             } else if (url.includes('spotify.com')) {
-                embedHTML = `<div class="music-wrapper" style="aspect-ratio: 1 / 1;"><iframe src="https://open.spotify.com/embed/${url.split('spotify.com/')[1]}" allow="encrypted-media"></iframe></div>`;
+                const path = url.split('spotify.com/')[1];
+
+                embedHTML = `
+            <div class="music-wrapper audio">
+                <iframe
+                    src="https://open.spotify.com/embed/${path}"
+                    allow="encrypted-media"
+                ></iframe>
+            </div>
+        `;
             } else {
-                embedHTML = `<p style="color: red;">Invalid URL</p>`;
+                embedHTML = `<p style="color:red;">Invalid URL</p>`;
             }
+
             musicEmbed.innerHTML = embedHTML;
         }
 
