@@ -570,19 +570,40 @@ permalink: /caffy/
             for (const file of files) {
                 if (!file.type.startsWith('image/')) continue;
 
+                const img = new Image();
                 const reader = new FileReader();
-                reader.onload = async e => {
-                    const { data, error } = await supabase
-                        .from('photos')
-                        .insert({ url: e.target.result })
-                        .select()
-                        .single();
 
-                    if (!error && data) {
+                reader.onload = e => {
+                    img.onload = async () => {
+                        const canvas = document.createElement('canvas');
+                        const scale = Math.min(170 / img.width, 170 / img.height, 1);
+
+                        canvas.width = img.width * scale;
+                        canvas.height = img.height * scale;
+
+                        const ctx = canvas.getContext('2d');
+                        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+                        const resizedBase64 = canvas.toDataURL('image/jpeg', 0.8);
+
+                        const { data, error } = await supabase
+                            .from('photos')
+                            .insert({ url: resizedBase64 })
+                            .select()
+                            .single();
+
+                        if (error) {
+                            console.error('Upload photo error:', error);
+                            return;
+                        }
+
                         photos.push(data);
                         renderPhotos();
-                    }
+                    };
+
+                    img.src = e.target.result;
                 };
+
                 reader.readAsDataURL(file);
             }
         }
