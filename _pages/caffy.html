@@ -364,14 +364,12 @@ permalink: /caffy/
         </footer>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/supabase.min.js"></script>
-
     <script type="module">
-        import { createClient } from "https://cdn.skypack.dev/@supabase/supabase-js";
-        // Supabase client
+        import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
         const SUPABASE_URL = 'https://lojonhvzayuemeomgrwr.supabase.co';
         const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imxvam9uaHZ6YXl1ZW1lb21ncndyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjkzODEwMTYsImV4cCI6MjA4NDk1NzAxNn0.6N2J-kbePybGGfa56usWsw-MhVoNZOzZpe0E8Y3esh0';
         const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        console.log('Supabase initialized');
 
         // --- Days Together Counter ---
         const daysTogetherEl = document.getElementById('daysTogether');
@@ -390,10 +388,11 @@ permalink: /caffy/
         const notes = document.querySelectorAll('.note textarea');
 
         async function loadNotes() {
-            const { data } = await supabase
+            const { data, error } = await supabase
                 .from('notes')
                 .select('*')
-                .order({ id: 'asc' });
+                .order('id', { ascending: true });
+            if (error) console.error('Load notes error:', error);
             if (data) {
                 data.forEach((note, index) => {
                     if (notes[index]) notes[index].value = note.content;
@@ -430,11 +429,12 @@ permalink: /caffy/
         }
 
         async function loadMusic() {
-            const { data } = await supabase
+            const { data, error } = await supabase
                 .from('music')
                 .select('*')
                 .eq('id', 1)
                 .single();
+            if (error) console.error('Load music error:', error);
             if (data?.url) {
                 musicUrlInput.value = data.url;
                 embedMusic(data.url);
@@ -469,10 +469,11 @@ permalink: /caffy/
         }
 
         async function loadPhotos() {
-            const { data } = await supabase
+            const { data, error } = await supabase
                 .from('photos')
                 .select('*')
-                .order({ added_at: 'asc' });
+                .order('added_at', { ascending: true });
+            if (error) console.error('Load photos error:', error);
             if (data) {
                 photos = data.map(p => p.url);
                 renderPhotos();
