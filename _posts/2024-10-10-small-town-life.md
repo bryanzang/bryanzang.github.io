@@ -35,5 +35,5 @@ Small Town Life Small Town Vibe 2024 October
 </p>
 
 
-Various Small Canadian Ontario Towns
+Various Small Ontario Towns
 ------
