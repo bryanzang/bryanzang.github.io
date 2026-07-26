@@ -15,22 +15,23 @@ Small Town Life Small Town Vibe 2024 October
 ======
 
 <p align="center">
-  <img src="/images/small-town/图片_20260725233658_25_16.jpg" width="23%">
-  <img src="/images/small-town/图片_20260725233701_26_16.jpg" width="23%">
-  <img src="/images/small-town/图片_20260725233705_27_16.jpg" width="23%">
   <img src="/images/small-town/图片_20260725233710_28_16.jpg" width="23%">
-</p>
-<p align="center">
-  <img src="/images/small-town/图片_20260725233723_29_16.jpg" width="23%">
-  <img src="/images/small-town/图片_20260725233737_30_16.jpg" width="23%">
-  <img src="/images/small-town/图片_20260725233745_31_16.jpg" width="23%">
-  <img src="/images/small-town/图片_20260725233752_32_16.jpg" width="23%">
-</p>
-<p align="center">
-  <img src="/images/small-town/图片_20260725233801_33_16.jpg" width="23%">
-  <img src="/images/small-town/图片_20260725233806_34_16.jpg" width="23%">
-  <img src="/images/small-town/图片_20260725233809_35_16.jpg" width="23%">
   <img src="/images/small-town/图片_20260725233812_36_16.jpg" width="23%">
+  <img src="/images/small-town/图片_20260725233705_27_16.jpg" width="23%">
+  <img src="/images/small-town/图片_20260725233701_26_16.jpg" width="23%">
+</p>
+<p align="center">
+  <img src="/images/small-town/图片_20260725233737_30_16.jpg" width="23%">
+  <img src="/images/small-town/图片_20260725233806_34_16.jpg" width="23%">
+  <img src="/images/small-town/图片_20260725233723_29_16.jpg" width="23%">
+  <img src="/images/small-town/图片_20260725233658_25_16.jpg" width="23%">
+  
+</p>
+<p align="center">
+  <img src="/images/small-town/图片_20260725233752_32_16.jpg" width="23%">
+  <img src="/images/small-town/图片_20260725233801_33_16.jpg" width="23%">
+  <img src="/images/small-town/图片_20260725233745_31_16.jpg" width="23%">
+  <img src="/images/small-town/图片_20260725233809_35_16.jpg" width="23%">
 </p>
 
 
