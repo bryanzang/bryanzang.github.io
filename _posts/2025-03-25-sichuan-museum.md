@@ -16,8 +16,8 @@ tags:
 
 <p align="center">
   <img src="/images/sichuan-museum/图片_20260913000157_158_16.jpg" width="23%">
-  <img src="/images/sichuan-museum/图片_20260913000209_159_16.jpg" width="23%">
   <img src="/images/sichuan-museum/图片_20260913000448_171_16.jpg" width="23%">
+  <img src="/images/sichuan-museum/图片_20260913000209_159_16.jpg" width="23%">
   <img src="/images/sichuan-museum/图片_20260913000315_163_16.jpg" width="23%">
 </p>
 <p align="center">
