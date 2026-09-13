@@ -13,9 +13,13 @@ Located on the western side of the city, or what locals refer to as 西门 (west
 
 > 两个黄鹂鸣翠柳，一行白鹭上青天，窗含西岭千秋雪，门泊东吴万里船
 >>  ——《绝句》
+
 and
+
 > 好雨知时节，当春乃发生。随风潜入夜，润物细无声。野径云俱黑，江船火独明。晓看红湿处，花重锦官城
 >>  ——《春夜喜雨》
+
+Both these poems in fact describe the scenery Dufu experienced in Chengdu. Those interested can translate for themselves for in my opinion, translations can only carry over so much information, leaving art in its original form is the best way to understand it.
 
 ======
 
