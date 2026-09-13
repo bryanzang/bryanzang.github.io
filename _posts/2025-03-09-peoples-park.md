@@ -25,9 +25,9 @@ People's Park is one of the many spots in downtown Chengdu where locals and tour
   <img src="/images/peoples-park/图片_20260912225100_142_16.jpg" width="23%">
 </p>
 <p align="center">
+  <img src="/images/peoples-park/图片_20260912225102_144_16.jpg" width="23%">
   <img src="/images/peoples-park/图片_20260912225101_143_16.jpg" width="23%">
   <img src="/images/peoples-park/图片_20260912225055_138_16.jpg" width="23%">
-  <img src="/images/peoples-park/图片_20260912225102_144_16.jpg" width="23%">
 </p>
 
 
