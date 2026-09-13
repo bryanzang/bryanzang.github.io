@@ -27,12 +27,12 @@ Both these poems in fact describe the scenery Dufu experienced in Chengdu. Those
 <p align="center">
   <img src="/images/caotang/图片_20260912232625_155_16.jpg" width="23%">
   <img src="/images/caotang/图片_20260912232555_152_16.jpg" width="23%">
-  <img src="/images/caotang/图片_20260912232514_147_16.jpg" width="23%">
+  <img src="/images/caotang/图片_20260912232530_149_16.jpg" width="23%">updates
   <img src="/images/caotang/图片_20260912232544_150_16.jpg" width="23%">
 </p>
 <p align="center">
   <img src="/images/caotang/图片_20260912232521_148_16.jpg" width="23%">
-  <img src="/images/caotang/图片_20260912232530_149_16.jpg" width="23%">
+  <img src="/images/caotang/图片_20260912232514_147_16.jpg" width="23%">
   <img src="/images/caotang/图片_20260912232553_151_16.jpg" width="23%">
   <img src="/images/caotang/图片_20260912232506_146_16.jpg" width="23%">
 </p>
