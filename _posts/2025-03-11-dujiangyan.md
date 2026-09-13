@@ -21,17 +21,17 @@ For those who don't know, the city of Dujiangyan is located about 70km away from
   <img src="/images/dujiangyan/图片_20260912220254_126_16.jpg" width="23%">
 </p>
 <p align="center">
-  <img src="/images/dujiangyan/图片_20260912220209_127_16.jpg" width="23%">
-  <img src="/images/dujiangyan/图片_20260912220209_128_16.jpg" width="23%">
-  <img src="/images/dujiangyan/图片_20260912220209_130_16.jpg" width="23%">
-  <img src="/images/dujiangyan/图片_20260912220209_131_16.jpg" width="23%">
+  <img src="/images/dujiangyan/图片_20260912220309_127_16.jpg" width="23%">
+  <img src="/images/dujiangyan/图片_20260912220319_128_16.jpg" width="23%">
+  <img src="/images/dujiangyan/图片_20260912220342_130_16.jpg" width="23%">
+  <img src="/images/dujiangyan/图片_20260912220349_131_16.jpg" width="23%">
   
 </p>
 <p align="center">
-  <img src="/images/dujiangyan/图片_20260912220209_133_16.jpg" width="23%">
-  <img src="/images/dujiangyan/图片_20260912220209_134_16.jpg" width="23%">
-  <img src="/images/dujiangyan/图片_20260912220209_135_16.jpg" width="23%">
-  <img src="/images/dujiangyan/图片_20260912220209_127_16.jpg" width="23%">
+  <img src="/images/dujiangyan/图片_20260912220406_133_16.jpg" width="23%">
+  <img src="/images/dujiangyan/图片_20260912220410_134_16.jpg" width="23%">
+  <img src="/images/dujiangyan/图片_20260912220513_135_16.jpg" width="23%">
+  <img src="/images/dujiangyan/图片_20260912220533_137_16.jpg" width="23%">
 </p>
 
 
