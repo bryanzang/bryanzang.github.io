@@ -41,7 +41,7 @@ Work Experience
   * Analyzed large financial-market datasets using Pyspark, Databricks, and PowerBI to support research on [Government of Canada debt](https://www.canada.ca/en/department-finance/services/publications/debt-management-report/2024-2025.html), [market well-being](https://www.bankofcanada.ca/wp-content/uploads/2026/05/fsr2026.pdf), investor behavior, policy reporting, and [debt-distribution framework revisions](https://publications.gc.ca/collections/collection_2026/banque-bank-canada/FB3-8-2026-18-eng.pdf).
   * Developed a daily volume-weighted bond-specialness indicator using Python and security-level transaction data to measure relative demand and scarcity in the Government of Canada bond market.
   * Reduced runtime efficiency of data pipelines by 100 fold using code parallelization and data structure serialization.
-  * Quantified hedge fund positions and foreign central banks’ holdings of Government of Canada securities into dedicated time series to analyze the growing foreign investment in Canadian debt and their inherent risks
+  * Quantified hedge fund positions and foreign central banks' holdings of Government of Canada securities into dedicated time series to analyze the growing foreign investment in Canadian debt and their inherent risks
 
 Projects
 ======
